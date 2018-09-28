@@ -10,9 +10,9 @@ class SearchFriendForm extends Component{
       <Fragment>
         <form className="input-group my-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"> <FontAwesomeIcon icon={faSearch}/></span>
+            <span class="input-group-text"><FontAwesomeIcon icon={faSearch}/></span>
           </div>
-          <input type="text" class="form-control" placeholder="search..." />
+          <input type="text" className="form-control fa-placholder" placeholder="Search..." />
         </form>
       </Fragment>
     )

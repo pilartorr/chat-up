@@ -5,7 +5,9 @@ class FriendsList extends Component {
   render() {
     return (
       <Fragment>
-        <p className="text-white p-5">FriendsList</p>
+        <div className="FriendsList">
+          
+        </div>
       </Fragment>
     );
   }
