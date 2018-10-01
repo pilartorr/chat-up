@@ -10,9 +10,25 @@ import Header2 from './components/Header2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faVideo, faPhone } from '@fortawesome/free-solid-svg-icons';
 
-
+const userMsgs = [
+  {
+    senderId: "pilar",
+    text: "hi, Itamar"
+  },
+  {
+    senderId: "Itamar",
+    text: "hi, how are you?"
+  }
+]
 
 class App extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      messages: userMsgs
+    }
+  }
   render() {
     return (
       <Fragment>
@@ -29,7 +45,7 @@ class App extends Component {
                 <FriendsList />
               </div>
               <div className="col-8" id="MessagesList" style={{"height": "60vh"}}>
-                <MessagesList />
+                <MessagesList messages={this.state.messages}/>
               </div>
             </div>
 
