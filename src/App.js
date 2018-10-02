@@ -64,9 +64,7 @@ class App extends Component {
       })
     })
   }
-
-
-
+  
   render() {
     return (
       <Fragment>
@@ -92,7 +90,7 @@ class App extends Component {
                 <SearchFriendForm />
               </div>
               <div className="col-8" id="SendMessageForm">
-                <SendMessageForm />
+                <SendMessageForm sendMessage={this.sendMessage}/>
               </div>
             </div>
 

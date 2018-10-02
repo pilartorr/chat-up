@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSmile, faCameraRetro, faMicrophone} from '@fortawesome/free-solid-svg-icons';
 
-
+const roomId='17560793';
 class SendMessageForm extends Component{
   constructor(){
     super()
@@ -35,8 +35,8 @@ class SendMessageForm extends Component{
   }
 
   sendMessage(text){
-    //to send the messages to Chatkit
-    this.currentUser({
+    //to send the messages to Chatkit    this.currentUser({
+    this.currentUser.sendMessage({
       text,
       roomId: roomId
     })
