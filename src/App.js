@@ -9,6 +9,7 @@ import Header2 from './components/Header2';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faVideo, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { ChatManager, TokenProvider } from '@pusher/chatkit';
 
 const userMsgs = [
   {
@@ -21,6 +22,15 @@ const userMsgs = [
   }
 ]
 
+//to interact with this instance of Chatkit.
+const instanceLocator='v1:us1:764a3912-2967-4e7d-8248-09bcc258f269';
+
+//Test Token Provider requests should be sent to
+const testToken='https://us1.pusherplatform.io/services/chatkit_token_provider/v1/:instance_id';
+
+const userName='pilar';
+const roomId='17560793';
+
 class App extends Component {
 
   constructor(){
@@ -29,6 +39,17 @@ class App extends Component {
       messages: userMsgs
     }
   }
+
+  componentDidMount(){
+    const chatManager = new ChatManager({
+      instanceLocator: instanceLocator,
+      userId: userName,
+      tokenProvider: new TokenProvider({
+        url: testToken
+      })
+    })
+  }
+
   render() {
     return (
       <Fragment>

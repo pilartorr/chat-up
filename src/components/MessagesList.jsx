@@ -7,7 +7,16 @@ class MessagesList extends Component{
     return(
       <Fragment>
         <div className="container" id="MessagesList">
-
+          <ul className="message-list">
+            {this.props.messages.map(message => {
+              return(
+                <li key={message.id}>
+                  <div>{message.senderId}</div>
+                  <div>{message.text}</div>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </Fragment>
     )
