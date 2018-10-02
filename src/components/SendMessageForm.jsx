@@ -6,6 +6,20 @@ import { faPlus, faSmile, faCameraRetro, faMicrophone} from '@fortawesome/free-s
 
 
 class SendMessageForm extends Component{
+  constructor(){
+    super()
+    this.state = {
+      message: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(e) {
+    this.setState({
+      message: e.target.value
+    })
+  }
+
   render(){
     return(
       <Fragment>
@@ -13,7 +27,7 @@ class SendMessageForm extends Component{
           <div class="input-group-prepend">
             <span class="input-group-text"> <FontAwesomeIcon icon={faSmile}/></span>
           </div>
-          <input type="text" class="form-control" placeholder="Type your message..." />
+          <input type="text" class="form-control" placeholder="Type your message..." onChange={this.handleChange} value={this.state.message}/>
           <div class="input-group-prepend">
             <span class="input-group-text"> <FontAwesomeIcon icon={faCameraRetro}/></span>
           </div>
