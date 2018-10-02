@@ -9,7 +9,7 @@ import Header2 from './components/Header2';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faVideo, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { ChatManager, TokenProvider } from '@pusher/chatkit';
+import { ChatManager, TokenProvider, subscribeToRoom } from '@pusher/chatkit';
 
 const userMsgs = [
   {
@@ -48,7 +48,24 @@ class App extends Component {
         url: testToken
       })
     })
+
+    chatManager.connect().then(currentUser => {
+      //for every user, create an id and takes the all the messages
+      currentUser.subscribeToRoom({
+        roomId: roomId,
+        hooks: {
+          onNewMessage: message => {
+            this.setState({
+              messages: [...this.state.messages, message]
+              //create a new array with all the messages and add a new message
+            })
+          }
+        }
+      })
+    })
   }
+
+
 
   render() {
     return (
