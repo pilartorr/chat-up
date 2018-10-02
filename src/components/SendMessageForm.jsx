@@ -18,18 +18,27 @@ class SendMessageForm extends Component{
   }
 
   handleChange(e) {
-    //this method updates the state to whatever the user types into the input field
+    //to update the state to whatever the user types into the input field
     this.setState({
       message: e.target.value
     })
   }
 
   handleSubmit(e){
+    //to take the messages
     e.preventDefault();
     this.props.sendMessage(this.state.message)
-    //we’re calling the sendMessage prop and passing in this.state.message as a parameter
+    //calling the sendMessage prop and passing in this.state.message as a parameter
     this.setState({
       message: ''
+    })
+  }
+
+  sendMessage(text){
+    //to send the messages to Chatkit
+    this.currentUser({
+      text,
+      roomId: roomId
     })
   }
 
