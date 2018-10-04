@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { render } from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faVideo, faPhone } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +12,7 @@ class Header2 extends Component{
 
             <div className="col">
               <FontAwesomeIcon icon={faAngleLeft} className="text-white mt-3 ml-3"/>
-              <img src="portrait.jpg" alt="user-photo" className="portrait ml-5"/>
+              <img src="portrait.jpg" alt="user-portrait" className="portrait ml-5"/>
             </div>
 
             <p className="col mt-3 mr-5 text-white text-center">User Name</p>

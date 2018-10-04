@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { render } from 'react-dom';
 
 class Header1 extends Component{
   render(){

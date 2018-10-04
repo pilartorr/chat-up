@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { ChatManager, TokenProvider /*subscribeToRoom*/ } from '@pusher/chatkit';
 
 import MessagesList from './components/MessagesList';
 import SendMessageForm from './components/SendMessageForm';
@@ -6,37 +7,28 @@ import FriendsList from './components/FriendsList';
 import SearchFriendForm from './components/SearchFriendForm';
 import Header1 from './components/Header1';
 import Header2 from './components/Header2';
+import {  instanceLocator, testToken } from './config.js';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faVideo, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { ChatManager, TokenProvider, subscribeToRoom } from '@pusher/chatkit';
-
-const userMsgs = [
-  {
-    senderId: "pilar",
-    text: "hi, Itamar"
-  },
-  {
-    senderId: "Itamar",
-    text: "hi, how are you?"
-  }
-]
-
-//to interact with this instance of Chatkit.
-const instanceLocator='v1:us1:764a3912-2967-4e7d-8248-09bcc258f269';
-
-//Test Token Provider requests should be sent to
-const testToken='https://us1.pusherplatform.io/services/chatkit_token_provider/v1/:instance_id';
+// const userMsgs = [
+//   {
+//     senderId: "",
+//     text: ""
+//   }
+//   {
+//     senderId: "",
+//     text: ""
+//   }
+// ]
 
 const userName='pilar';
-const roomId='17560793';
+const roomId= 17560793;
 
 class App extends Component {
 
   constructor(){
     super();
     this.state = {
-      messages: userMsgs
+      messages: []
     }
   }
 
@@ -50,9 +42,10 @@ class App extends Component {
     })
 
     chatManager.connect().then(currentUser => {
+      this.currentUser = currentUser;
       //for every user, create an id and takes the all the messages
       currentUser.subscribeToRoom({
-        roomId: roomId,
+        roomId: 17560793,
         hooks: {
           onNewMessage: message => {
             this.setState({
@@ -64,7 +57,15 @@ class App extends Component {
       })
     })
   }
-  
+
+  sendMessage(text){
+    //to send the messages to Chatkit    this.currentUser({
+    this.currentUser.sendMessage({
+      text,
+      roomId: roomId
+    })
+  }
+
   render() {
     return (
       <Fragment>

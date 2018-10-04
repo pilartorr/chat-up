@@ -1,14 +1,11 @@
-import React, { Component, Fragment } from 'react';
-// import { render } from 'react-dom';
+import React, { Component } from 'react';
+
 
 class FriendsList extends Component {
   render() {
     return (
-      <Fragment>
-        <div className="FriendsList">
-          
-        </div>
-      </Fragment>
+      <div className="FriendsList">
+      </div>
     );
   }
 }
