@@ -6,17 +6,24 @@ class MessagesList extends Component{
 
     return(
       <Fragment>
-        <div className="container" id="MessagesList">
-          <ul className="message-list">
+        <div className="container my-4" id="MessagesList" style={{ backgroundColor: 'transparent' }}>
+
+          <ul className="message-list mr-5">
             {this.props.messages.map((message, id) => {
               return(
-                <li key={id}>
-                  <div>{message.senderId}</div>
-                  <div>{message.text}</div>
+                <li key={id} style={{ listStyleType: "none"}}>
+                  {/* <div style={{ color: "#bec7d8", paddingLeft: "5px"}}>
+                    {message.senderId}
+                  </div> */}
+                  <div className="speech-bubble my-3 pl-3">
+                    {message.text}
+                  </div>
+                  <span onClick={this.props.onDeleteMessage}></span>
                 </li>
               )
             })}
           </ul>
+
         </div>
       </Fragment>
     )

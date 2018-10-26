@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSmile, faCameraRetro, faMicrophone} from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faShareSquare } from '@fortawesome/free-solid-svg-icons';
+// import { faSmile, faCameraRetro, faMicrophone} from '@fortawesome/free-solid-svg-icons';
 
 class SendMessageForm extends Component{
   constructor(){
@@ -23,10 +24,8 @@ class SendMessageForm extends Component{
   }
 
   handleSubmit(e){
-    //to take the messages
     e.preventDefault();
-    console.log(this.state.message)
-    // this.props.sendMessage(this.state.message)
+    this.props.sendMessage(this.state.message)
     //calling the sendMessage prop and passing in this.state.message as a parameter
     // this.setState({
     //   message: ''
@@ -37,16 +36,28 @@ class SendMessageForm extends Component{
     return(
       <Fragment>
         <form className="input-group my-3" onSubmit={this.handleSubmit}>
-          <div className="input-group-prepend">
+          {/* <div className="input-group-prepend">
             <span className="input-group-text"> <FontAwesomeIcon icon={faSmile}/></span>
+          </div> */}
+          <div className="input-group-prepend">
+            <button className="input-group-text"
+                    onClick={this.props.onDeleteMessage}>
+                    <FontAwesomeIcon icon={faTrashAlt}/>
+            </button>
           </div>
           <input type="text" className="form-control" placeholder="Type your message..." onChange={this.handleChange} value={this.state.message}/>
           <div className="input-group-prepend">
+            <button className="input-group-text"
+                    onClick={this.props.onNewMessage}>
+                    <FontAwesomeIcon icon={faShareSquare}/>
+            </button>
+          </div>
+          {/* <div className="input-group-prepend">
             <span className="input-group-text"> <FontAwesomeIcon icon={faCameraRetro}/></span>
           </div>
           <div className="input-group-prepend">
             <span className="input-group-text"> <FontAwesomeIcon icon={faMicrophone}/></span>
-          </div>
+          </div> */}
         </form>
       </Fragment>
     )

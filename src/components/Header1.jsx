@@ -5,7 +5,7 @@ class Header1 extends Component{
     return(
       <Fragment>
         <div className="container" id="Title">
-          <p className="lead text-center my-4 text-white">CHAT UP!</p>
+          <h1 className="h1 text-center py-4 text-white">ChatUp :)</h1>
         </div>
       </Fragment>
     )
