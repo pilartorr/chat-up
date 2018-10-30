@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faShareSquare } from '@fortawesome/free-solid-svg-icons';
-// import { faSmile, faCameraRetro, faMicrophone} from '@fortawesome/free-solid-svg-icons';
+import { faShareSquare } from '@fortawesome/free-solid-svg-icons';
+// import { faTrashAlt, faSmile, faCameraRetro, faMicrophone} from '@fortawesome/free-solid-svg-icons';
 
 class SendMessageForm extends Component{
   constructor(){
@@ -27,9 +27,9 @@ class SendMessageForm extends Component{
     e.preventDefault();
     this.props.sendMessage(this.state.message)
     //calling the sendMessage prop and passing in this.state.message as a parameter
-    // this.setState({
-    //   message: ''
-    // })
+    this.setState({
+      message: ''
+    })
   }
 
   render(){
@@ -39,16 +39,16 @@ class SendMessageForm extends Component{
           {/* <div className="input-group-prepend">
             <span className="input-group-text"> <FontAwesomeIcon icon={faSmile}/></span>
           </div> */}
-          <div className="input-group-prepend">
+          {/* <div className="input-group-prepend">
             <button className="input-group-text"
                     onClick={this.props.onDeleteMessage}>
                     <FontAwesomeIcon icon={faTrashAlt}/>
             </button>
-          </div>
+          </div> */}
           <input type="text" className="form-control" placeholder="Type your message..." onChange={this.handleChange} value={this.state.message}/>
           <div className="input-group-prepend">
             <button className="input-group-text"
-                    onClick={this.props.onNewMessage}>
+                    type="submit">
                     <FontAwesomeIcon icon={faShareSquare}/>
             </button>
           </div>

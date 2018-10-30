@@ -16,15 +16,15 @@ const roomId= 17560793;
 
 class App extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       messages: []
     }
     //bind the context of the sendMessage function to this component
     this.sendMessage = this.sendMessage.bind(this);
-    this.deleteMessage = this.deleteMessage.bind(this);
-    this.deleteHistory = this.deleteHistory.bind(this);
+    // this.deleteMessage = this.deleteMessage.bind(this);
+    // this.deleteHistory = this.deleteHistory.bind(this);
   }
 
   componentDidMount(){
@@ -62,29 +62,30 @@ class App extends Component {
     })
   }
 
-  deleteMessage(id){
-    //to send the messages to Chatkit
-    this.currentUser.deleteMessage({
-      roomId: roomId
-    })
-  }
+  // deleteMessage(id){
+  //   //to send the messages to Chatkit
+  //   this.currentUser.deleteMessage({
+  //     roomId: roomId
+  //   })
+  // }
 
-  deleteHistory(history){
-    //to send the messages to Chatkit
-    this.currentUser.sendMessage({
-      history,
-      roomId: roomId
-    })
-  }
+  // deleteHistory(history){
+  //   //to send the messages to Chatkit
+  //   this.currentUser.sendMessage({
+  //     history,
+  //     roomId: roomId
+  //   })
+  // }
 
   render() {
 
-    const { sendMessage, deleteMessage, deleteHistory } = this;
+    const { sendMessage } = this;
+    // const { sendMessage, deleteMessage, deleteHistory } = this;
     const { messages } = this.state;
 
     return (
       <Fragment>
-        <div className="app container mt-5">
+        <div className="app container mt-5" style={{ maxWidth: "30vw", minHeigth: "100vh" }}>
           <div className="m-auto">
 
             <div className="row" id="Headers">
@@ -96,10 +97,10 @@ class App extends Component {
               {/* <div className="col-4" id="FriendsList" style={{"height": "60vh"}}>
                 <FriendsList />
               </div> */}
-              <div className="col-12" id="MessagesList" style={{"height": "60vh"}}>
+              <div className="col-12" id="MessagesList" style={{"height": "60vh", overflow: "scroll"}}>
                 <MessagesList messages={messages}
-                              deleteMessage={deleteMessage}
-                              deleteHistory={deleteHistory}
+                              // deleteMessage={deleteMessage}
+                              // deleteHistory={deleteHistory}
                 />
               </div>
             </div>

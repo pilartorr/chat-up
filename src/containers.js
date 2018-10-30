@@ -1,40 +1,26 @@
 //connect UI components to the store
 import { connect } from 'react-redux';
+
+// View Components
 import MessagesList from './components/MessagesList';
 import SendMessageForm from './components/SendMessageForm';
 
-// actions to moficate the state
-import { addMessage, deleteMessage, deleteHistory } from 'actions';
+// Actions to moficate the state
+import { addMessage, currentUserRoomId } from 'actions';
 
 //connect NewMessage-container with the UI SendMessageForm Component throught dispatch()
-export const MessagesState = connect(
+export const addMessageToSendMessageForm = connect(
   state =>
     ({
       messages: [...state.messages]
     }),
   dispatch =>
     ({
-      onNewMessage(text, roomId){
-        dispatch(addMessage(text, roomId))
-      },
-      onDeleteHistory(history){
-        dispatch(deleteHistory(history))
+      onAddMessage(text){
+        dispatch(addMessage(text))
+      }
+      onAddRoomId(roomId){
+        dispatch(currentUserRoomId(roomId))
       }
     })
 )(SendMessageForm)
-
-//connect MessagesState-container with the UI MessagesList Component throught dispatch()
-export const DeleteMessage = connect (
-  //the first argument of connect() is a function that maps state variables to property.
-  state =>
-    ({
-      messages: [...state.messages]
-    }),
-  //the second argument of connect is a function that dispatches actions when events are invoked
-  dispatch =>
-    ({
-      onDeleteMessage(id){
-        dispatch(deleteMessage(id))
-      }
-    })
-)(MessagesList)

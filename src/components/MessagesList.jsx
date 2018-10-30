@@ -18,7 +18,7 @@ class MessagesList extends Component{
                   <div className="speech-bubble my-3 pl-3">
                     {message.text}
                   </div>
-                  <span onClick={this.props.onDeleteMessage}></span>
+                  {/* <span onClick={this.props.onDeleteMessage}></span> */}
                 </li>
               )
             })}
